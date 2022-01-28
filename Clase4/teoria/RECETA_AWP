@@ -1,0 +1,25 @@
+1. Crear el manifest.json
+    1.1. Definir las propiedades generales (name, short name, display, 
+    scope, start url, theme color, background color)
+    1.2. Crear los iconos (512x512 y 192x192)
+
+
+
+
+
+
+
+
+propiedades
+
+
+- display: define el modo de visualizacion de la app. Valores posibles:
+    * fullscreen
+    * standalone
+    * minimal-ui
+    * browser
+
+
+- icons: especifica un array de imagenes que pueden servir como iconos de app.
+
+- orientation
