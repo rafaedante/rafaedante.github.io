@@ -1,0 +1,12 @@
+PROMESAS
+
+se representan a traves de un objeto y cada promesa estara en un estado puntual: 
+
+ - pendiente
+ - resuelto
+ - rechazado
+
+ Los metodos asociados a las promesas
+
+ .then -> ejecuta la funcion callback resolve cuando la promesa se cumple.
+ .catch -> ejecuta la funcion callback reject cuando la promesa se rechaza

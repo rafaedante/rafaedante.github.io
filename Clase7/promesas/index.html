@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <input type="text" id="campo" disabled>
+
+    <script>
+
+        // Promise
+       // alert('Esto es un proceso sincronico') // BLOQUEANTES
+
+        /* console.log('Primer Console log')
+        setTimeout(function() {
+            console.log('hola mundo al cabo de 3 segundos')
+        }, 3000)
+        console.log('Tercer Console log') */
+
+
+        // Una promesa es una OPERACION ASINCRONICA que puede ser resuelta o rechazada.
+
+        // Tarea #1: CREAR LA PROMESA: definir CUANDO esta resuelta o rechazada
+        /*
+        const promesa = new Promise(function(resolver, rechazar) {
+
+            let temperatura = 23
+            if(temperatura < 10) {
+                //TODO OK
+                resolver('TODO OK')
+            } else {
+                // ERROR
+                rechazar('ERROR')
+            }
+
+        })
+        */
+
+        // Tarea #2: USAR LA PROMESA: definir QUE SUCEDE cuando esta resuelta o cuando esta rechazada.
+       
+        /*  promesa
+        .then(function(mensaje) {
+            document.write(mensaje)
+        })
+        .catch(function(error) {
+            console.log(error)
+        }) */
+
+        // Usar con await -> async function
+
+        // 1) ejecuta la promesa
+        // 2) espera (await) a que la promesa se RESUELVA
+        // 3) cuando la promesa se resuelve await devuelve el argumento de la funcion resolver
+
+       /* async function mifuncion() {
+           try {
+                const mensaje = await promesa
+                console.log(mensaje)
+           } catch(error) {
+               console.log('Error en promise: ', error)
+           }           
+       }
+
+       mifuncion()
+       */
+
+       
+       
+       
+       // API Fetch: transforma una peticion http en una respuesta http
+
+       /* En que ambitos esta disponible?
+                window(Browser)
+                ServiceWorker(Worker)
+
+          Que le provee al ambito global?
+
+                Funciones: fetch()
+                Eventos: FetchEvent
+                Objetos: Request / Response (funciones constructoras)
+       */
+
+      /*  let peticionHttp = new Request('https://jsonplaceholder.typicode.com/users', {
+           method: 'POST',
+           body: JSON.stringify({id:1}),
+           headers: {
+               'Content-type': 'application/json'
+           }
+       })
+
+       console.log(peticionHttp)
+
+       let respuestaHttp = new Response('', {
+
+       })
+ */
+
+      (async function() {
+
+        const respuesta = await fetch('https://jsonplaceholder.typicode.com/users')
+
+        const datos = await respuesta.json()        
+
+        document.querySelector('#campo').disabled = false
+
+        document.querySelector('#campo').addEventListener('input', function(e) {
+            const a_mostrar = datos.filter(function(val) {
+                return val.name.includes(e.target.value)
+            })
+            console.log(a_mostrar)
+        })      
+
+      })()
+       
+
+       
+
+    </script>
+
+</body>
+</html>

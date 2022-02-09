@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Worker</title>
+</head>
+<body>
+
+    <input type="number" id="numero1"> + 
+    <input type="number" id="numero2"> <br><br>
+    <button>Sumar</button>
+    <div id="respuesta"></div>
+
+    <script>
+
+        if(window.Worker) {
+
+            const calculadora = new Worker('calculadora.worker.js')
+
+            document.querySelector("button").addEventListener('click', () => {
+                const numero1 = Number(document.querySelector("#numero1").value)
+                const numero2 = Number(document.querySelector("#numero2").value)
+
+                //Enviar peticiones (mensajes)
+                calculadora.postMessage({
+                numero1,
+                numero2,
+                })
+
+            })
+
+            //Enviar peticiones (mensajes)
+            //calculadora.postMessage('Hola mundo desde aqui')
+
+           /*  calculadora.postMessage({
+                numero1: 20,
+                numero2: 30
+            }) */
+
+            //Recibir respuestas (mensajes)
+            /* calculadora.addEventListener('message', e => {
+                console.log('Mensaje recibido: ', e)
+            }) */
+            calculadora.addEventListener('message', e => {
+                document.querySelector('#respuesta').innerHTML = "La suma es: " + e.data
+            })
+
+        } else {
+            console.log('Worker no soportado')
+        }
+
+    </script>
+    
+</body>
+</html>
