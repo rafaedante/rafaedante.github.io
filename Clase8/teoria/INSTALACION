@@ -1,0 +1,15 @@
+Que vimos la clase anterior?  Por que?
+
+Hacer instalable la aplicacion / el sitio
+
+1. Indicar al browser que este sitio es un sitio instalable
+
+    - Indicar el nombre de la aplicacion
+    - Indicar el icono
+    - Definir la forma en la que se visualiza el sitio
+    - MANIFEST.JSON
+
+2. Programar la logica necesaria para efectuar la instalacion.
+
+    -Crear el proceso de copiado de archivos a la cache.
+    - SERVICEWORKER / CACHE
