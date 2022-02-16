@@ -1,0 +1,56 @@
+ Para que vimos Workers?
+
+ - Para ejecutar procesos lentos o pesados en segundo plano
+ - Para entender mejor el ServiceWorker (caracteriztica offline) ya que esta interfaz
+   es la 'base' del SW.
+
+Que?
+
+- API Worker, una interfaz para implementar procesos en segundo plano, que se comunican
+ con el programa principal a traves de "mensajes"
+
+Como?
+
+- Verificar si el navegador soporta la API Worker
+ if(window.Worker) {.......}
+
+ - Crear el Worker
+ new Worker('ruta al archivo que se ejecutara en segundo plano')
+
+- Enviar un mensaje
+worker.postMessage(contenido)
+
+- Recepcion del mensaje
+worker.addEventListener('message', e => {.....})
+
+
+/*********************OFFLINE*****************************/
+
+Para que usamos worker?
+
+- Para interceptar las PETICIONES HTTP SALIENTES, y asi redirigirlas primero a la CACHE,
+  para obtener el comportamiento offline.
+ 
+
+Que?
+
+- API ServiceWorker, 'hija' de la API Worker
+
+
+Como?
+
+* DESARROLLAR EL ARCHIVO DEL ServiceWorker
+
+- Ciclo de Vida (y sus eventos)
+
+    fetch: se dispara al interceptar una peticion saliente - evento central
+      > Interceptar las peticiones entrantes y buscar su respuesta en la CACHE PRIMERO
+
+    activate: se dispara para actualizar la version del serviceWorker
+      > Actualizacion de los archivos de la cache (incluyendo el SW)
+
+    install: se dispara al registrar por primera vez el serviceWorker
+      > Hacer el copiado de los archivos a la cache.
+
+*  CONECTAR ESE ARCHIVO CON EL PROGRAMA PRINCIPAL
+    Registracion.

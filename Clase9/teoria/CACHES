@@ -1,0 +1,37 @@
+1- La cache es un contenedor de pares PETICION HTTP / RESPUESTA HTTP
+
+2- Para agregar un elemento a la cache
+
+ - Abrir la cache con el metodo OPEN
+ - La Peticion (Requesto URL)
+ - La Respuesta (Response)
+ - cache.put(peticion, respuesta)
+
+
+
+ /*******************************************************************/
+
+ 1) El problema
+
+ Necesitamos un dispositivo de almacenamiento OFFLINE para los archivos estaticos.
+
+ 2) La solucion
+
+ Utilizar la cache del navegador. La cache del navegador es un almacen de Respuestas HTTP que corresponden
+ con Peticiones HTTP. Se puede pensar con una "array" de pares Peticion/Respuesta
+
+ 3) La implementacion
+
+ Se implementa en JS a traves de dos objetos: Un objeto global (window.caches) y un objeto
+ particular que representa un espacio de cache determinado(se obtiene mediante el metodo
+ open() de window.caches). El objeto window.caches se puede pensar como un "array" de
+ Espacios de cache.
+    * LA IMPLEMENTACION SE BASA EN PROMESAS Y API FETCH
+    * Siempre que quiera gestionar TODOS los espacio de caches vamos a utilizar window.caches
+    * Siempre que quiera gestionar UN ESPACIO DE CHACHE DETERMINADO vamos a utilizar
+      window.caches.open()
+    * CRUD (create, read, update, delete)
+        - Create: add, addAll, put
+        - Read: match, matchAll
+        - Update: borrar y crear de nuevo
+        - Delete: delete
