@@ -1,0 +1,21 @@
+{
+    "name": "SuperLista",
+    "short_name": "SL",
+    "theme_color": "#FF0000",
+    "background_color": "#00FF00",
+    "display": "fullscreen",
+    "scope": "/",
+    "start_url": "/",
+    "icons": [
+        {
+          "src": "img/icon512.png",
+          "sizes": "512x512",
+          "type": "image/png"
+        },
+        {
+          "src": "img/icon192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+  }

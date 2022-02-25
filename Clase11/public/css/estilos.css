@@ -1,0 +1,51 @@
+#lista {
+    padding: 10px;
+}
+
+.etiqueta {
+    color: #CCC;
+}
+
+#galeria {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 1%;
+}
+
+#galeria .item {
+    width: 98%;
+    height: 125px;
+    margin-bottom: 10px;
+
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#galeria .item .titulo {  
+    width: 25%;
+}
+
+#galeria .item .controles {    
+    width: 25%;
+}
+
+#galeria .item .borrar {    
+    width: 25%;
+}
+
+@media screen and (max-width: 640px){
+
+    #galeria .item {
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+
+    #galeria .item .titulo,
+    #galeria .item .controles,
+    #galeria .item .borrar{
+        width: 100%;
+        height: 50px;
+    } 
+    
+}
